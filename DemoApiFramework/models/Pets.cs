@@ -4,7 +4,7 @@ namespace DemoApiFramework.models;
 
 public class Pets
 {
-    [JsonProperty("id")] public int? Id { get; set; }
+    [JsonProperty("id")] public int Id { get; set; }
     [JsonProperty("category")] public  Category Category { get; set; }
     [JsonProperty("name")] public string Name { get; set; }
     [JsonProperty("photoUrls")] public string[] PhotoUrls { get; set; }

@@ -5,7 +5,7 @@ public abstract class TestBase
 {
     protected const string HostRick = "https://rickandmortyapi.com/api";
     protected const string Host = "https://swapi.dev/api/";
-    
+    protected const string HostUser = "http://users.bugred.ru/";
     protected string[] residentsTatoonie =
     {
         "https://swapi.dev/api/people/1/",
