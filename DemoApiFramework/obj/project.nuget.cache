@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QWQCVGHk56P1SAqfbYedkqvvtW5wgw8boyEv+QJb2GWlzeV+lyRcZ2XmxeBite0hylhupKqyiBrL4mpC1TjVnw==",
+  "dgSpecHash": "nHnt5+FIRAJNhz0IE/ha+zyFe68xYbY6h077/b+btOExOZTW8xzew156a8yAdgpPKEalmqcCTMaP9soqvZ4jqw==",
   "success": true,
-  "projectFilePath": "C:\\git\\TestDemoFramework\\DemoApiFramework\\DemoApiFramework\\DemoApiFramework.csproj",
+  "projectFilePath": "C:\\git2\\DemoFramewrok\\DemoApiFramework\\DemoApiFramework.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\semen\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\semen\\.nuget\\packages\\jslinq\\2.10.1\\jslinq.2.10.1.nupkg.sha512",

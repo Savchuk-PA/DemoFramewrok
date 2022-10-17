@@ -1395,11 +1395,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\git\\TestDemoFramework\\DemoApiFramework\\DemoApiFramework\\DemoApiFramework.csproj",
+      "projectUniqueName": "C:\\git2\\DemoFramewrok\\DemoApiFramework\\DemoApiFramework.csproj",
       "projectName": "DemoApiFramework",
-      "projectPath": "C:\\git\\TestDemoFramework\\DemoApiFramework\\DemoApiFramework\\DemoApiFramework.csproj",
+      "projectPath": "C:\\git2\\DemoFramewrok\\DemoApiFramework\\DemoApiFramework.csproj",
       "packagesPath": "C:\\Users\\semen\\.nuget\\packages\\",
-      "outputPath": "C:\\git\\TestDemoFramework\\DemoApiFramework\\DemoApiFramework\\obj\\",
+      "outputPath": "C:\\git2\\DemoFramewrok\\DemoApiFramework\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\semen\\AppData\\Roaming\\NuGet\\NuGet.Config",

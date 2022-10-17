@@ -25,7 +25,7 @@ public class Tests : TestBase
    [Test]
     public async Task GetCharacterTesting()
     {
-        HttpResponseMessage result = await _client.GetAsync(Host + Endpoint);
+        HttpResponseMessage result = await _client.GetAsync(HostRick + Endpoint);
         
         string content = await result.Content.ReadAsStringAsync();
         JObject json = JObject.Parse(content);
