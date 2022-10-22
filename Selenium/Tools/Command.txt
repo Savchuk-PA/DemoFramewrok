@@ -1,0 +1,221 @@
+driver.Url = "https://old.kzn.opencity.pro/"; // открыть страницу
+
+string title = driver.Title; // записать  title страницы
+
+int titleleLength = driver.Title.Length; // записать длину title
+
+string pageURL = driver.Url; // записать url страницы
+int urlLength = pageURL.Length; // записать длину url
+
+Навигация
+
+driver.Navigate().GoToUrl("URL ресурса");
+driver.Navigate().Back // страница назад
+driver.Navigate().Forward // страница вперед
+driver.Navigate().Refresh // обновить страницу (тест сохранения данных на странице (в полях ввода))
+
+WebElements
+
+WebElement element = driver.FindElement(By.Id("UserName")); // SendKeys вводит текст в поле для ввода
+element.SendKeys("ToolsQA")
+driver.FindElement(By.Id("UserName")).SendKeys("ToolsQA");
+driver.FindElement(By.LinkText("ToolsQA")).Click(); // клик по элементу
+
+element.Displayed;  //тот метод определяет, отображается ли элемент в данный момент или нет. Это ничего не принимает в качестве параметра, но возвращает логическое значение ( true/false ).
+WebElement element = driver.FindElement(By.Id("UserName"));
+bool status = element.Displayed;
+bool status = driver.FindElement(By.Id("UserName")).Displayed;
+
+element.Selected; // Определить, выбран ли этот элемент или нет. Это ничего не принимает в качестве параметра, но возвращает логическое значение ( true/false ). Эта операция применяется только к элементам ввода, таким как флажки, параметры выбора  и переключатели . Это возвращает True , если элемент в данный момент выбран или проверен , в противном случае — false .
+WebElement element = driver.FindElement(By.Id("Sex-Male"));
+bool status = element.Selected;
+bool staus = driver.FindElement(By.Id("Sex-Male")).Selected;
+
+void IWebElement.Submit() — этот метод работает лучше, чем Click(), если текущий элемент является формой или элементом внутри формы. Это ничего не принимает в качестве параметра и ничего не возвращает.
+Если это приводит к изменению текущей страницы, этот метод будет ждать загрузки новой страницы.
+
+WebElement element = driver.FindElement(By.Id("SubmitButton"));
+element.Submit();
+driver.FindElement(By.Id("SubmitButton")).Submit();
+
+string WebElement.TagName // Этот метод извлечет видимый ( т.е. не скрытый CSS ) внутренний текст элемента.
+ ОН ничего не принимает в качестве параметра, но возвращает значение String. Возвращает innerText элемента, включая вложенные элементы, без каких-либо начальных или конечных пробелов.
+IWebElement element = driver.FindElement(By.Xpath("anyLink"));
+String linkText = element.Text;
+
+string WebElement.TagName{ get; } Этот метод получает имя тега этого элемента. Он ничего не принимает в качестве параметра и возвращает значение String.
+WebElement element = driver.FindElement(By.Id("SubmitButton"));
+String tagName = element.TagName;
+String tagName = driver.FindElement(By.Id("SubmitButton")).TagName;
+
+string WebElement.GetCssValue(string propertyName) — этот метод извлекает значение свойства CSS данного элемента. Он принимает строку в качестве параметра, который является именем свойства.
+Значения цвета должны возвращаться в виде строк rgba, поэтому, например, если свойство background-color установлено как « зеленый » в исходном коде HTML, возвращаемое значение будет « rgba(0, 255, 0, 1) »
+Command  - element.GetCssValue();
+
+string IWebElement.GetAttribute(string attributeName) — этот метод получает значение данного атрибута элемента. Он принимает строку в качестве параметра и возвращает значение строки.
+Command - element.GetAttribute();
+Атрибуты — это дополнительные идентификаторы, имя, класс, и с помощью этого метода вы можете получить значение атрибутов любого заданного элемента.
+WebElement element = driver.FindElement(By.Id("SubmitButton"));
+String attValue = element.GetAttribute("id"); //This will return "SubmitButton"
+
+
+System.Drawing.Size WebElement.Size{ get; }  // Этот метод извлекает ширину и высоту визуализируемого элемента. Он ничего не принимает в качестве параметра, но возвращает объект Dimension.
+Command - element.Size(); // возвращает размер элемента на странице.
+WebElement element = driver.FindElement(By.Id("SubmitButton"));
+Dimension dimensions = element.Size();
+Console.WriteLine(“Height :” + dimensions.Height + ”Width : "+ dimensions.Width); // тест
+
+System.Drawing.Location IWebElement.Location{ get; } // этот метод определяет местоположение элемента на странице. Он ничего не принимает в качестве параметра, но возвращает объект Point.
+Command - element.Location();
+возвращает объект Point , из которого мы можем получить координаты X и Y определенного элемента.
+WebElement element = driver.FindElement(By.Id("SubmitButton"));
+Point point = element.Location;
+Console.WriteLine("X cordinate : " + point.X + "Y cordinate: " + point.Y);
+**************************
+
+WebElement parentElement = driver.FindElement(By.ClassName("button")); // может пригодится когда-то
+	IWebElement childElement = parentElement.FindElement(By.Id("submit"));
+	childElement.Submit();
+
+
+driver.FindElement(By.LinkText("Элемент LINKTEXT")); // Поиск по ссылке
+ driver.FindElement(By.PartialLinkText("Элемент LINKTEXT")); // Поиск по слову из ссылки
+ WebElement element = driver.FindElement(By.LinkText("Partial Link Test"));
+ 	element.Clear();
+ WebElement element = driver.FindElement(By.PartialLinkText("Partial");
+ 	element.Clear();
+ 	
+ 	********************************************************************************************
+ 	
+ 	 Radio Button/CheckBox
+ 	 
+ 	 WebElement radioBtn = driver.FindElement(By.Id("toolsqa")); // Поиск и клик по radioBtn (по Id)
+     radioBtn.Click();
+     
+     Если Radio Button выбран:
+     Если ваш выбор основан на предварительном выборе радиокнопки /флажка , и вам просто нужно выбрать невыбранную радиокнопку/ флажок .
+     Предположим, что есть два переключателя/флажка , один из которых выбран по умолчанию, а другой вы хотите выбрать для своего теста. 
+     С оператором IsSelected вы можете узнать, выбран элемент или нет.
+     
+     // Сохраняем все элементы в списке элементов	
+     	List<WebElement> oRadioButton = driver.FindElements(By.Name("toolsqa"));
+     
+     	// Создаем логическую переменную, которая будет содержать значение (True/False)
+     	bool bValue = false;
+     
+     	// Этот оператор вернет True, если выбрана первая радиокнопка.
+     	bValue = oRadioButton.ElementAt(0).Selected;
+     
+     	// проверит, что если bValue имеет значение True, означает, что выбран первый переключатель
+     	if (bValue == true)
+     	{
+     		// выберет второй переключатель, если первый переключатель выбран по умолчанию.
+     		oRadioButton.ElementAt(1).Click();
+     	}
+     	else
+     	{
+     		// Если первый переключатель не выбран по умолчанию, будет выбран первый
+     		oRadioButton.ElementAt(0).Click();
+     	}
+     	
+     	
+     	
+     	Выбор radio button по значению (если много кнопок) 
+     	
+        IList <IWebElement> oCheckBox = driver.FindElements(By.Name("tool")); // Находим элемент флажка или радиокнопки по имени
+        int Size = oCheckBox.Count; // Сообщит количество установленных флажков
+        for (int i = 0; i < Size; i++) // Запускаем цикл от первого флажка к последнему флажку
+       	{ 
+       	    // Сохраняем имя флажка в строковой переменной, используя атрибут 'Value'
+            		String value = oCheckBox.ElementAt(i).GetAttribute("value");
+            		
+            		// Установите флажок, если значение флажка совпадает с тем, что вы ищете
+                		if (Value.Equals("toolsqa"))
+                		{
+                			oCheckBox.ElementAt(i).Click();
+                			break;
+                		}
+                	}
+                	
+        Выпадающий список и операции множественного выбора:
+        
+        Моделирует тег SELECT , предоставляя вспомогательные методы для выбора и отмены выбора параметров. 
+        Select — это класс, предоставляемый Selenium для выполнения нескольких операций над объектом DropDown и объектом Multiple Select .
+        Этот класс можно найти в пакете Selenium Support.UI . Поскольку Select также является обычным классом, 
+        его объект также создается с помощью ключевого слова New с обычным синтаксисом создания класса
+        
+        SelectElement oSelect = new SelectElement()); // класс конструктор, запрашивает объект типа element
+        IWebElement element = driver.FindElement(By.Id("Country"));
+        	SelectElement oSelect = new SelectElement(element);
+            или так
+        	SelectElement oSelect = new SelectElement(driver.FindElement(By.Id("Country")));
+        	
+        	После того как вы получили объект oSelect, который является объектом SELECT , вы можете получить доступ ко всем методам, находящимся внутри класса SELECT
+        	
+        	void SelectElement.SelectByText ( строковый текст ) — очень легко выбрать или выбрать параметр, указанный в любых раскрывающихся списках и полях множественного выбора, с помощью метода SelectByText . Он принимает параметр String, который является одним из элементов Value of Select, и ничего не возвращает.
+            
+            Команда - oSelect.SelectByText("текст");
+            
+            SelectElement oSelect = new SelectElement(driver.FindElement(By.Id("yy_date_8")));
+            
+            oSelect.selectByText("2010");
+            
+     oSelect.SelectByIndex(4); выбор по индексу
+     oSelect.SelectByValue("2014"); по значению
+     
+     IList<IWebElement> SelectElement.Options { get; } – получает список всех опций, принадлежащих тегу Select.
+     
+     SelectElement oSelect = new SelectElement(driver.FindElement(By.Id("yy_date_8")));
+     	IList<IWebElement> elementCount = oSelect.Options;
+     	Console.Write(elementCount.Count);  // получить количество элементов внутри SELECT
+     	
+     
+     Код — чтобы получить количество всех элементов внутри SELECT и распечатать текстовое значение каждого элемента, присутствующего в SELECT .
+     SelectElement oSelect = new SelectElement(driver.FindElement(By.Id("yy_date_8")));
+     	IList<IWebElement> elementCount = oSelect.Options;
+     	int iSize = elementCount.Count;
+     
+     	for (int i = 0; i > iSize; i++)
+     	{
+     		String sValue = elementCount.ElementAt(i).Text;
+     	   Console.WriteLine(sValue);
+     	   
+     Selenium Alert
+     
+     .Accept()  Чтобы принять предупреждение
+     .Dismiss()  Чтобы закрыть предупреждение
+     .Text  Чтобы получить текст предупреждения
+     .SendKeys()  Чтобы написать текст в оповещении
+     
+     в оповещение нужно переключится driver.SwitchTo().Alert().
+     
+     пример: 
+     
+     [Test]
+             public void Test()
+             {
+     			IWebDriver driver = new FirefoxDriver();
+     			driver.Url = "https://toolsqa.com/handling-alerts-using-selenium-webdriver/";
+     			driver.Manage().Window.Maximize();
+     			   		
+     			driver.FindElement(By.XPath("//*[@id='content']/p[4]/button")).Click();
+ 
+     			IAlert simpleAlert = driver.SwitchTo().Alert();
+     			
+     			String alertText = simpleAlert.Text;
+     			Console.WriteLine("Alert text is " + alertText);
+     					
+     			simpleAlert.Accept();
+             }
+             
+     Оповещение о подтверждении:
+     Оповещение поставляется с возможностью принять или отклонить оповещение.
+      Чтобы принять предупреждение, вы можете использовать IAlert.Accept() , а чтобы отклонить, вы можете использовать IAlert.Dismiss() .
+        
+         
+         
+
+
+     	
+     
+     
